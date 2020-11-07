@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "city forecast requests" do
   describe "when a user visits the landing page" do
     it "can retrieve weather forecast for a given city" do
-      city = 'denver,co'
+      city = "denver,co"
       get "/api/v1/forecast?location=#{city}"
 
       expect(response).to be_successful
