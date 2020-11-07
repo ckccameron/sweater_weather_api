@@ -1,5 +1,5 @@
 class MapService
-  def get_lat_long(location)
+  def get_geocode(location)
     to_json("/geocoding/v1/address?location=#{location}")
   end
 

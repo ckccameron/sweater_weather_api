@@ -15,7 +15,7 @@ describe MapService do
 
   it "returns geocoding data for a given location" do
     location = "denver, co"
-    geocode_data = @service.get_lat_long(location)
+    geocode_data = @service.get_geocode(location)
 
     expect(geocode_data).to have_key(:results)
     expect(geocode_data[:results]).to be_an(Array)
