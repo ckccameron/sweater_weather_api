@@ -11,6 +11,31 @@ describe WeatherFacade do
     location = 'denver, co'
     weather = WeatherFacade.new(location).weather_combined
 
-    expect(weather).to be_a(Hash)
+    expect(weather).to be_a(Weather)
+
+    expect(weather.current_weather).to be_a(CurrentWeather)
+    expect(weather.current_weather.datetime).to be_a(String)
+    expect(weather.current_weather.sunrise).to be_a(String)
+    expect(weather.current_weather.sunset).to be_a(String)
+    expect(weather.current_weather.temperature).to be_a(Float)
+    expect(weather.current_weather.feels_like).to be_a(Float)
+    expect(weather.current_weather.conditions).to be_a(String)
+    expect(weather.current_weather.icon).to be_a(String)
+
+    expect(weather.daily_weather.first).to be_a(DailyWeather)
+    expect(weather.daily_weather.first.date).to be_a(String)
+    expect(weather.daily_weather.first.sunrise).to be_a(String)
+    expect(weather.daily_weather.first.sunset).to be_a(String)
+    expect(weather.daily_weather.first.max_temp).to be_a(Float)
+    expect(weather.daily_weather.first.min_temp).to be_a(Float)
+    expect(weather.daily_weather.first.conditions).to be_a(String)
+    expect(weather.daily_weather.first.icon).to be_a(String)
+
+    expect(weather.hourly_weather.first).to be_an(HourlyWeather)
+    expect(weather.hourly_weather.first.time).to be_a(String)
+    expect(weather.hourly_weather.first.wind_speed).to be_a(String)
+    expect(weather.hourly_weather.first.wind_direction).to be_a(String)
+    expect(weather.hourly_weather.first.conditions).to be_a(String)
+    expect(weather.hourly_weather.first.icon).to be_a(String)
   end
 end
