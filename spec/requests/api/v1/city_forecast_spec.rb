@@ -89,9 +89,9 @@ describe "city forecast requests" do
 
       bad_request = JSON.parse(response.body, symbolize_names: true)
 
-      expect(bad_request[:type]).to eq("error")
-      expect(bad_request[:attributes][:status_code]).to be_an(Integer)
-      expect(bad_request[:attributes][:message]).to be_a(String)
+      expect(bad_request[:data][:type]).to eq("error")
+      expect(bad_request[:data][:attributes][:status_code]).to be_an(Integer)
+      expect(bad_request[:data][:attributes][:message]).to be_a(String)
     end
   end
 end
