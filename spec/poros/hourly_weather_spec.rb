@@ -4,6 +4,8 @@ describe HourlyWeather do
   before :each do
     @data = {
       :time=>1604815200,
+      :temperature=>55.38,
+      :feels_like=>43.45,
       :wind_speed=>11.43,
       :wind_direction=>270,
       :conditions=>"scattered clouds",
@@ -16,6 +18,8 @@ describe HourlyWeather do
   it "exists with attributes" do
     expect(@weather).to be_a(HourlyWeather)
     expect(@weather.time).to eq("10:00")
+    expect(@weather.temperature).to eq(55.38)
+    expect(@weather.feels_like).to eq(43.45)
     expect(@weather.wind_speed).to eq("11 miles per hour")
     expect(@weather.wind_direction).to eq("W")
     expect(@weather.wind_direction).to_not eq("E")

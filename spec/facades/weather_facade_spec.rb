@@ -33,6 +33,8 @@ describe WeatherFacade do
 
     expect(weather.hourly_weather.first).to be_an(HourlyWeather)
     expect(weather.hourly_weather.first.time).to be_a(String)
+    expect(weather.hourly_weather.first.temperature).to be_a(Numeric)
+    expect(weather.hourly_weather.first.feels_like).to be_a(Numeric)
     expect(weather.hourly_weather.first.wind_speed).to be_a(String)
     expect(weather.hourly_weather.first.wind_direction).to be_a(String)
     expect(weather.hourly_weather.first.conditions).to be_a(String)

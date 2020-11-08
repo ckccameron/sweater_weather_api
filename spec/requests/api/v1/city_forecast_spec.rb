@@ -70,6 +70,8 @@ describe "city forecast requests" do
       expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to be_a(Hash)
 
       expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to have_key(:time)
+      expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to have_key(:temperature)
+      expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to have_key(:feels_like)
       expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to have_key(:wind_speed)
       expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to have_key(:wind_direction)
       expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to have_key(:conditions)
@@ -78,6 +80,8 @@ describe "city forecast requests" do
       expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to_not have_key(:pressure)
 
       expect(denver_forecast[:data][:attributes][:hourly_weather][0][:time]).to be_a(String)
+      expect(denver_forecast[:data][:attributes][:hourly_weather][0][:temperature]).to be_a(Numeric)
+      expect(denver_forecast[:data][:attributes][:hourly_weather][0][:feels_like]).to be_a(Numeric)
       expect(denver_forecast[:data][:attributes][:hourly_weather][0][:wind_speed]).to be_a(String)
       expect(denver_forecast[:data][:attributes][:hourly_weather][0][:wind_direction]).to be_a(String)
       expect(denver_forecast[:data][:attributes][:hourly_weather][0][:conditions]).to be_a(String)
