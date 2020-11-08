@@ -39,7 +39,7 @@ describe "city forecast requests" do
       expect(denver_forecast[:data][:attributes][:current_weather][:feels_like]).to be_a(Float)
       expect(denver_forecast[:data][:attributes][:current_weather][:humidity]).to_not be_a(String)
       expect(denver_forecast[:data][:attributes][:current_weather][:uvi]).to_not be_a(String)
-      expect(denver_forecast[:data][:attributes][:current_weather][:visibility]).to_not be_a(String)
+      expect(denver_forecast[:data][:attributes][:current_weather][:visibility]).to be_a(String)
       expect(denver_forecast[:data][:attributes][:current_weather][:conditions]).to be_a(String)
       expect(denver_forecast[:data][:attributes][:current_weather][:icon]).to be_a(String)
 
@@ -54,8 +54,8 @@ describe "city forecast requests" do
       expect(denver_forecast[:data][:attributes][:daily_weather][0]).to have_key(:min_temp)
       expect(denver_forecast[:data][:attributes][:daily_weather][0]).to have_key(:conditions)
       expect(denver_forecast[:data][:attributes][:daily_weather][0]).to have_key(:icon)
-      expect(denver_forecast[:data][:attributes][:daily_weather]).to_not have_key(:dew_point)
-      expect(denver_forecast[:data][:attributes][:daily_weather]).to_not have_key(:pressure)
+      expect(denver_forecast[:data][:attributes][:daily_weather][0]).to_not have_key(:dew_point)
+      expect(denver_forecast[:data][:attributes][:daily_weather][0]).to_not have_key(:pressure)
 
       expect(denver_forecast[:data][:attributes][:daily_weather][0][:date]).to be_a(String)
       expect(denver_forecast[:data][:attributes][:daily_weather][0][:sunrise]).to be_a(String)
@@ -74,8 +74,8 @@ describe "city forecast requests" do
       expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to have_key(:wind_direction)
       expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to have_key(:conditions)
       expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to have_key(:icon)
-      expect(denver_forecast[:data][:attributes][:hourly_weather]).to_not have_key(:dew_point)
-      expect(denver_forecast[:data][:attributes][:hourly_weather]).to_not have_key(:pressure)
+      expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to_not have_key(:dew_point)
+      expect(denver_forecast[:data][:attributes][:hourly_weather][0]).to_not have_key(:pressure)
 
       expect(denver_forecast[:data][:attributes][:hourly_weather][0][:time]).to be_a(String)
       expect(denver_forecast[:data][:attributes][:hourly_weather][0][:wind_speed]).to be_a(String)
