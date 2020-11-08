@@ -24,3 +24,6 @@
 
 # Ignore SimpleCov test coverage reports
 /coverage
+
+# Ignore application configuration
+/config/application.yml
