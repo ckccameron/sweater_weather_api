@@ -50,6 +50,8 @@ class WeatherFacade
     weather_service[:hourly][1..8].map do |weather_forecast|
       data = {
         time: weather_forecast[:dt],
+        temperature: weather_forecast[:temp],
+        feels_like: weather_forecast[:feels_like],
         wind_speed: weather_forecast[:wind_speed],
         wind_direction: weather_forecast[:wind_deg],
         conditions: weather_forecast[:weather][0][:description],
