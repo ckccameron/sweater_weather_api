@@ -47,8 +47,8 @@ describe WeatherService do
     expect(weather[:current][:dt]).to be_an(Integer)
     expect(weather[:current][:sunrise]).to be_an(Integer)
     expect(weather[:current][:sunset]).to be_an(Integer)
-    expect(weather[:current][:temp]).to be_a(Float)
-    expect(weather[:current][:feels_like]).to be_a(Float)
+    expect(weather[:current][:temp]).to be_a(Numeric)
+    expect(weather[:current][:feels_like]).to be_a(Numeric)
     expect(weather[:current][:weather][0][:description]).to be_a(String)
     expect(weather[:current][:weather][0][:icon]).to be_a(String)
 
@@ -70,8 +70,8 @@ describe WeatherService do
     expect(weather[:hourly][0][:weather][0]).to have_key(:icon)
 
     expect(weather[:hourly][0][:dt]).to be_an(Integer)
-    expect(weather[:hourly][0][:temp]).to be_a(Float)
-    expect(weather[:hourly][0][:feels_like]).to be_a(Float)
+    expect(weather[:hourly][0][:temp]).to be_a(Numeric)
+    expect(weather[:hourly][0][:feels_like]).to be_a(Numeric)
     expect(weather[:hourly][0][:weather][0][:description]).to be_a(String)
     expect(weather[:hourly][0][:weather][0][:icon]).to be_a(String)
 
@@ -97,10 +97,10 @@ describe WeatherService do
     expect(weather[:daily][0][:dt]).to be_an(Integer)
     expect(weather[:daily][0][:sunrise]).to be_an(Integer)
     expect(weather[:daily][0][:sunset]).to be_an(Integer)
-    expect(weather[:daily][0][:temp][:day]).to be_a(Float)
-    expect(weather[:daily][0][:temp][:night]).to be_a(Float)
-    expect(weather[:daily][0][:feels_like][:day]).to be_a(Float)
-    expect(weather[:daily][0][:feels_like][:night]).to be_a(Float)
+    expect(weather[:daily][0][:temp][:day]).to be_a(Numeric)
+    expect(weather[:daily][0][:temp][:night]).to be_a(Numeric)
+    expect(weather[:daily][0][:feels_like][:day]).to be_a(Numeric)
+    expect(weather[:daily][0][:feels_like][:night]).to be_a(Numeric)
     expect(weather[:daily][0][:weather][0][:description]).to be_a(String)
     expect(weather[:daily][0][:weather][0][:icon]).to be_a(String)
   end
