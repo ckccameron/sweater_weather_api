@@ -1,5 +1,7 @@
 class HourlyWeather
   attr_reader :time,
+              :temperature,
+              :feels_like,
               :wind_speed,
               :wind_direction,
               :conditions,
@@ -7,6 +9,8 @@ class HourlyWeather
 
   def initialize(data)
     @time = format_time(data[:time])
+    @temperature = data[:temperature]
+    @feels_like = data[:feels_like]
     @wind_speed = format_wind_speed(data[:wind_speed])
     @wind_direction = format_wind_direction(data[:wind_direction])
     @conditions = data[:conditions]
