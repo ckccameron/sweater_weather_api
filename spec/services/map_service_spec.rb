@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe MapService do
   before :each do
-    response = File.read("spec/fixtures/denver_mapquest_geocode.json")
-    stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/address?key=#{ENV["MAPQUEST_KEY"]}&location=denver,%20co")
-      .to_return(status: 200, body: response)
+    # response = File.read("spec/fixtures/denver_mapquest_geocode.json")
+    # stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/address?key=#{ENV["MAPQUEST_KEY"]}&location=denver,%20co")
+    #   .to_return(status: 200, body: response)
 
     @service = MapService.new
   end

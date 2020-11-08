@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe MapFacade do
-  before :each do
-    response = File.read("spec/fixtures/denver_mapquest_geocode.json")
-    stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/address?key=#{ENV["MAPQUEST_KEY"]}&location=denver,%20co")
-      .to_return(status: 200, body: response)
-  end
+  # before :each do
+  #   response = File.read("spec/fixtures/denver_mapquest_geocode.json")
+  #   stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/address?key=#{ENV["MAPQUEST_KEY"]}&location=denver,%20co")
+  #     .to_return(status: 200, body: response)
+  # end
   it "returns latitude and longitude coordinates for a given location" do
     location = "denver, co"
     lat_long = MapFacade.lat_long(location)
