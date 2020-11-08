@@ -4,7 +4,7 @@ describe "background image requests" do
   describe "when a user visits the landing page" do
     it "can retrieve background image for a given city" do
       city = "denver,co"
-      get "/api/v1/backgrounds?location=#{city}"
+      get "/api/v1/background?location=#{city}"
 
       expect(response).to be_successful
       expect(response.content_type).to eq("application/json")
