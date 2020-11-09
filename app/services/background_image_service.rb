@@ -1,11 +1,6 @@
 class BackgroundImageService
   def get_image(location)
-    binding.pry
-    to_json("search/photos") do |req|
-      req.params["query"] = format_city_name(location)
-      req.params["per_page"] = 1
-      req.params["orientation"] = "landscape"
-    end
+    to_json("search?query=#{format_city_name(location)}&per_page=1")
   end
 
   def format_city_name(location)
@@ -15,9 +10,8 @@ class BackgroundImageService
   private
 
   def conn
-    Faraday.new(url: "https://api.unsplash.com/") do |req|
-      req.headers["Accept-Version"] = "v1"
-      req.params["client_id"] = ENV["IMAGE_KEY"]
+    Faraday.new(url: "https://api.pexels.com/v1/") do |req|
+      req.headers["Authorization"] = ENV["IMAGE_KEY"]
     end
   end
 
