@@ -1,5 +1,6 @@
 class BackgroundImage
-  attr_reader :location,
+  attr_reader :id,
+              :location,
               :image_url,
               :credit
 
