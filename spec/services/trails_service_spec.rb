@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe TrailService do
+describe TrailsService do
   before :each do
-    @service = TrailService.new
+    @service = TrailsService.new
   end
 
   it "exists" do
-    expect(@service).to be_a(TrailService)
+    expect(@service).to be_a(TrailsService)
   end
 
   it "returns trails info when given latitude and longitude for a location" do

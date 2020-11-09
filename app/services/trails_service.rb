@@ -1,4 +1,4 @@
-class TrailService
+class TrailsService
   def get_trails(lat, lon)
     to_json("data/get-trails?lat=#{lat}&lon=#{lon}")
   end
