@@ -52,8 +52,9 @@ describe MapService do
 
   it "returns routing data to show distance between two given locations" do
     location = "denver, co"
-    trail_location = "estes park, co"
-    distance_data = @service.get_distance_between(location, trail_location)
+    lat = 39.9388
+    long = -105.2582
+    distance_data = @service.get_distance_between(location, lat, long)
 
     expect(distance_data).to have_key(:route)
     expect(distance_data[:route]).to be_a(Hash)
