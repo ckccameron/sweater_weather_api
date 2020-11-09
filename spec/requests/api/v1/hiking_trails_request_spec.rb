@@ -24,7 +24,7 @@ describe "hiking trail requests" do
       expect(denver_trails[:data][:attributes][:forecast]).to have_key(:temperature)
 
       expect(denver_trails[:data][:attributes][:forecast][:summary]).to be_a(String)
-      expect(denver_trails[:data][:attributes][:forecast][:temperature]).to be_a(String)
+      expect(denver_trails[:data][:attributes][:forecast][:temperature]).to be_a(Numeric)
 
       expect(denver_trails[:data][:attributes]).to have_key(:trails)
       expect(denver_trails[:data][:attributes][:trails]).to be_an(Array)
