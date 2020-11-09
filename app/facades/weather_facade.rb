@@ -13,6 +13,15 @@ class WeatherFacade
     Weather.new(data)
   end
 
+  def current_weather_summary
+    data = {
+      summary: weather_service[:current][:weather][0][:description],
+      temperature: weather_service[:current][:temp]
+    }
+
+    CurrentWeatherSummary.new(data)
+  end
+
   def current
     data = {
       datetime: weather_service[:current][:dt],
@@ -61,6 +70,8 @@ class WeatherFacade
       HourlyWeather.new(data)
     end
   end
+
+  private
 
   def weather_service
     WeatherService.new.get_weather(lat, long)
