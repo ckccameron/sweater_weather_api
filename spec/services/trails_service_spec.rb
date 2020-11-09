@@ -11,8 +11,8 @@ describe TrailsService do
 
   it "returns trails info when given latitude and longitude for a location" do
     lat = 39.738453
-    lon = -104.984853
-    hiking_trails = @service.get_trails(lat, lon)
+    long = -104.984853
+    hiking_trails = @service.get_trails(lat, long)
 
     expect(hiking_trails).to be_a(Hash)
 
