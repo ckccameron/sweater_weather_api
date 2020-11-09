@@ -23,7 +23,7 @@ describe BackgroundImageService do
     expect(image_data[:photos][0]).to have_key(:photographer_url)
     expect(image_data[:photos][0]).to have_key(:photographer_id)
     expect(image_data[:photos][0]).to have_key(:src)
-    
+
     expect(image_data[:photos][0][:id]).to be_an(Integer)
     expect(image_data[:photos][0][:url]).to be_a(String)
     expect(image_data[:photos][0][:photographer]).to be_a(String)
@@ -32,11 +32,7 @@ describe BackgroundImageService do
 
     expect(image_data[:photos][0][:src]).to be_a(Hash)
     expect(image_data[:photos][0][:src]).to have_key(:original)
-    expect(image_data[:photos][0][:src]).to have_key(:portrait)
-    expect(image_data[:photos][0][:src]).to have_key(:landscape)
 
     expect(image_data[:photos][0][:src][:original]).to be_a(String)
-    expect(image_data[:photos][0][:src][:portrait]).to be_a(String)
-    expect(image_data[:photos][0][:src][:landscape]).to be_a(String)
   end
 end
