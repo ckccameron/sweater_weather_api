@@ -3,8 +3,8 @@ class MapService
     to_json("geocoding/v1/address?location=#{location}")
   end
 
-  def get_distance_between(location, trail_location)
-    to_json("directions/v2/route?from=#{location}&to=#{trail_location}")
+  def get_distance_between(location, lat, long)
+    to_json("directions/v2/route?from=#{location}&to=#{lat},#{long}")
   end
 
   private
