@@ -49,4 +49,17 @@ describe MapService do
     expect(geocode_data[:results][0][:locations][0][:latLng]).to have_key(:lng)
     expect(geocode_data[:results][0][:locations][0][:latLng][:lng]).to be_a(Float)
   end
+
+  it "returns routing data to show distance between two given locations" do
+    location = "denver, co"
+    trail_location = "estes park, co"
+    distance_data = @service.get_distance_between(location, trail_location)
+
+    expect(distance_data).to have_key(:route)
+    expect(distance_data[:route]).to be_a(Hash)
+
+    expect(distance_data[:route]).to have_key(:distance)
+
+    expect(distance_data[:route][:distance]).to be_a(Float)
+  end
 end
