@@ -2,10 +2,13 @@ class Api::V1::TrailsController < ApplicationController
   def index
     location = params[:location]
 
-    map = MapFacade.lat_long(location)
     lat = MapFacade.lat_long(location)[:lat]
-    lon = MapFacade.lat_long(location)[:lng]
-    weather = WeatherFacade.new(location).current_weather_temp_and_summary
-    trails = TrailsFacade.trails(lat, lon)
+    long = MapFacade.lat_long(location)[:lng]
+
+    forecast = WeatherFacade.new(location).current_weather_summary
+
+    trails = TrailsFacade.new(lat, long, location).trails
+
+    render json: TrailsSerializer.new(HikingTrail.new(location, forecast, trails))
   end
 end
