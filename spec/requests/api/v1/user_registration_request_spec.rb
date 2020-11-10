@@ -9,9 +9,9 @@ describe "user registration requests" do
       }
 
       params = {
-        "email": "whatever@example.com",
-        "password": "password",
-        "password_confirmation": "password"
+        "email": "boom@shakalaka.com",
+        "password": "pass123",
+        "password_confirmation": "pass123"
       }
 
       post "/api/v1/users", headers: headers, params: JSON.generate(params)
@@ -45,9 +45,9 @@ describe "user registration requests" do
       }
 
       params = {
-        "email": "whatever@example.com",
-        "password": "pass",
-        "password_confirmation": "password"
+        "email": "boom@shakalaka.com",
+        "password": "pass123",
+        "password_confirmation": "password123"
       }
 
       post "/api/v1/users", headers: headers, params: JSON.generate(params)
