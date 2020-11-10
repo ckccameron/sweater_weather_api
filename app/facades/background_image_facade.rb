@@ -14,6 +14,8 @@ class BackgroundImageFacade
     BackgroundImage.new(data)
   end
 
+  private
+
   def background_image_service
     BackgroundImageService.new.get_image(@location)
   end
