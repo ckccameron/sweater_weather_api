@@ -24,7 +24,7 @@ describe "user registration requests" do
       expect(response.status).to eq(201)
       expect(response.content_type).to eq("application/json")
 
-      user = JSON.parse(response.body, symbolize_names: true)
+      user = JSON.parse(response.body, symbolize_names: true)[:data]
 
       expect(user).to have_key(:id)
       expect(user[:id]).to_not eq(nil)
