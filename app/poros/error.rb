@@ -1,10 +1,8 @@
 class Error
-  attr_reader :id,
-              :status_code
+  attr_reader :id
 
   def initialize(error_message)
     @error_message = error_message
-    @status_code = 400
   end
 
   def message
