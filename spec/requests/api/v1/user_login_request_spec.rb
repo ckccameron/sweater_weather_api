@@ -1,24 +1,27 @@
 require 'rails_helper'
 
-describe "user registration requests" do
+describe "user login requests" do
   describe "when a user visits the landing page" do
-    it "can create/register a new user and generate a unique api key" do
+    before :each do
+      @user = User.create!(email: "boom@shakalaka.com", password: "pass123", password_confirmation: "pass123")
+    end
+
+    it "can allow a user to login with their valid credentials" do
       headers = {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
       }
 
       params = {
         "email": "boom@shakalaka.com",
-        "password": "pass123",
-        "password_confirmation": "pass123"
+        "password": "pass123"
       }
 
-      post "/api/v1/users", headers: headers, params: JSON.generate(params)
+      post "/api/v1/sessions", headers: headers, params: JSON.generate(params)
 
       expect(response).to be_successful
-      expect(response.status).to eq(201)
-      expect(response.content_type).to eq("application/json")
+      expect(response.status).to eq(200)
+      expect(response.content_type).to include("application/json")
 
       user = JSON.parse(response.body, symbolize_names: true)[:data]
 
@@ -38,7 +41,7 @@ describe "user registration requests" do
       expect(user[:attributes][:api_key]).to be_a(String)
     end
 
-    it "returns 401 status code with error message if registration fails" do
+    it "returns 400 status code with error message if login fails" do
       headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -46,13 +49,12 @@ describe "user registration requests" do
 
       params = {
         "email": "boom@shakalaka.com",
-        "password": "pass123",
-        "password_confirmation": "password123"
+        "password": "pass"
       }
 
-      post "/api/v1/users", headers: headers, params: JSON.generate(params)
+      post "/api/v1/sessions", headers: headers, params: JSON.generate(params)
 
-      expect(response.status).to eq(401)
+      expect(response.status).to eq(400)
       expect(response.content_type).to eq("application/json")
 
       error_message = JSON.parse(response.body, symbolize_names: true)[:data]

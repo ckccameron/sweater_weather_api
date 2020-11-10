@@ -4,6 +4,7 @@ class Api::V1::UsersController < ApplicationController
 
     user = User.create(user_params)
     if user.save
+      session[:user_id] = user.id
       render json: UsersSerializer.new(user), status: 201
     else
       render json: ErrorSerializer.new(Error.new(error_message)), status: 401
