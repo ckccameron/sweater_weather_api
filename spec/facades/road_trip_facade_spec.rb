@@ -5,7 +5,7 @@ describe RoadTripFacade do
     origin = "los angeles, ca"
     destination = "san diego, ca"
     road_trip = RoadTripFacade.new(origin, destination).road_trip
-
+    binding.pry
     expect(road_trip).to be_a(RoadTrip)
   end
 end
