@@ -41,11 +41,19 @@ describe "background image requests" do
     it "can render bad request error if location is not given" do
       get "/api/v1/background?location="
 
-      bad_request = JSON.parse(response.body, symbolize_names: true)
+      error_message = JSON.parse(response.body, symbolize_names: true)[:data]
 
-      expect(bad_request[:data][:type]).to eq("error")
-      expect(bad_request[:data][:attributes][:status_code]).to be_an(Integer)
-      expect(bad_request[:data][:attributes][:message]).to be_a(String)
+      expect(error_message).to be_a(Hash)
+
+      expect(error_message).to have_key(:type)
+      expect(error_message[:type]).to eq("error")
+
+      expect(error_message).to have_key(:attributes)
+      expect(error_message[:attributes]).to be_a(Hash)
+
+      expect(error_message[:attributes]).to have_key(:message)
+      expect(error_message[:attributes][:message]).to be_a(String)
+      expect(error_message[:attributes][:message]).to eq("Bad Request - Location must be given")
     end
   end
 end
