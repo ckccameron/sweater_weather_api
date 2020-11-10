@@ -2,10 +2,6 @@ require 'rails_helper'
 
 describe "user registration requests" do
   describe "when a user visits the landing page" do
-    # before :each do
-    #   User.destroy_all
-    # end
-
     it "can create/register a new user and generate a unique api key" do
       headers = {
         'Content-Type': 'application/json',
@@ -40,6 +36,38 @@ describe "user registration requests" do
 
       expect(user[:attributes][:email]).to be_a(String)
       expect(user[:attributes][:api_key]).to be_a(String)
+    end
+
+    it "returns 401 status code with error message if registrations fails" do
+      headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+
+      params = {
+        "email": "whatever@example.com",
+        "password": "pass",
+        "password_confirmation": "password"
+      }
+
+      post "/api/v1/users", headers: headers, params: JSON.generate(params)
+
+      expect(response.status).to eq(401)
+      expect(response.content_type).to eq("application/json")
+
+      error_message = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      expect(error_message).to be_a(Hash)
+
+      expect(error_message).to have_key(:type)
+      expect(error_message[:type]).to eq("error")
+
+      expect(error_message).to have_key(:attributes)
+      expect(error_message[:attributes]).to be_a(Hash)
+
+      expect(error_message[:attributes]).to have_key(:message)
+      expect(error_message[:attributes][:message]).to be_a(String)
+      expect(error_message[:attributes][:message]).to eq("Your credentials are bad")
     end
   end
 end
