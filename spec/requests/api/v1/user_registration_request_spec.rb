@@ -38,7 +38,7 @@ describe "user registration requests" do
       expect(user[:attributes][:api_key]).to be_a(String)
     end
 
-    it "returns 401 status code with error message if registrations fails" do
+    it "returns 401 status code with error message if registration fails" do
       headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
