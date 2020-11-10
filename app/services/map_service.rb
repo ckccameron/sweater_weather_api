@@ -3,6 +3,10 @@ class MapService
     to_json("/geocoding/v1/address?location=#{location}")
   end
 
+  def get_distance_between(origin, destination)
+    to_json("directions/v2/route?from=#{origin}&to=#{destination}")
+  end
+
   private
 
   def conn
