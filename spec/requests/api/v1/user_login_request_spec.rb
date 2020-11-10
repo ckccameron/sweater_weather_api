@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe "user login requests" do
   describe "when a user visits the landing page" do
+    before :each do
+      @user = User.create!(email: "boom@shakalaka.com", password: "pass123", password_confirmation: "pass123")
+    end
+
     it "can allow a user to login with their valid credentials" do
       headers = {
           'Content-Type': 'application/json',
@@ -13,7 +17,7 @@ describe "user login requests" do
         "password": "pass123"
       }
 
-      post '/api/v1/sessions', headers: headers, params: JSON.generate(params)
+      post "/api/v1/sessions", headers: headers, params: JSON.generate(params)
 
       expect(response).to be_successful
       expect(response.status).to eq(200)
