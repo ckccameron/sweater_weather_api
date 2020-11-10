@@ -35,6 +35,7 @@ describe "user registration requests" do
       expect(user[:attributes]).to have_key(:email)
       expect(user[:attributes]).to have_key(:api_key)
       expect(user[:attributes]).to_not have_key(:password)
+      expect(user[:attributes]).to_not have_key(:password_confirmation)
       expect(user[:attributes]).to_not have_key(:password_digest)
 
       expect(user[:attributes][:email]).to be_a(String)
