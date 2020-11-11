@@ -22,6 +22,6 @@ describe RoadTrip do
     expect(@road_trip.origin).to eq("los angeles, ca")
     expect(@road_trip.destination).to eq("san diego, ca")
     expect(@road_trip.travel_time).to eq("01 hr, 58 min")
-    expect(@road_trip.forecast_at_eta).to eq({:conditions=>"clear sky", :temperature=>63.48})
+    expect(@road_trip.weather_at_eta).to eq({:conditions=>"clear sky", :temperature=>63.48})
   end
 end
