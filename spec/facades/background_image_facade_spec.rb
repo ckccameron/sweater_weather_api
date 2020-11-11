@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe BackgroundImageFacade do
   it "returns a relevant image for a given location" do
+    response = File.read("spec/fixtures/denver_pexels_image.json")
+    stub_request(:get, "https://api.pexels.com/v1/search?per_page=1&query=denver")
+      .to_return(status: 200, body: response)
+
     location = "denver, co"
     image = BackgroundImageFacade.new(location).image
 
