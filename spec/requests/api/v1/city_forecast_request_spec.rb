@@ -3,6 +3,14 @@ require 'rails_helper'
 describe "city forecast requests" do
   describe "when a user visits the landing page" do
     it "can retrieve weather forecast for a given city" do
+      data1 = File.read("spec/fixtures/denver_mapquest_geocode.json")
+      stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/address?key=S4SXZhZF3pzXzFyReP6k0VK2gVy6jKDC&location=denver,co")
+        .to_return(status: 200, body: data1)
+
+      data2 = File.read("spec/fixtures/denver_open_weather_forecast.json")
+      stub_request(:get, "https://api.openweathermap.org/data/2.5/onecall?appid=#{ENV["WEATHER_KEY"]}&exclude=minutely&lat=39.738453&lon=-104.984853&units=imperial")
+        .to_return(status: 200, body: data2)
+
       city = "denver,co"
       get "/api/v1/forecast?location=#{city}"
 
