@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 describe WeatherFacade do
-  # before :each do
-  #   response = File.read("spec/fixtures/denver_open_weather_forecast.json")
-  #   stub_request(:get, "https://api.openweathermap.org/data/2.5/onecall?appid=#{ENV["WEATHER_KEY"]}&exclude=minutely&lat=39.738453&lon=-104.984853&units=imperial")
-  #     .to_return(status: 200, body: response)
-  # end
-
   it "returns current, daily and hourly weather forecast for a given location" do
+    response1 = File.read("spec/fixtures/denver_mapquest_geocode.json")
+    stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/address?key=#{ENV["MAPQUEST_KEY"]}&location=denver,%20co")
+      .to_return(status: 200, body: response1)
+
+    response2 = File.read("spec/fixtures/denver_open_weather_forecast.json")
+    stub_request(:get, "https://api.openweathermap.org/data/2.5/onecall?appid=#{ENV["WEATHER_KEY"]}&exclude=minutely&lat=39.738453&lon=-104.984853&units=imperial")
+      .to_return(status: 200, body: response2)
+
     location = 'denver, co'
     weather = WeatherFacade.new(location).weather_combined
 

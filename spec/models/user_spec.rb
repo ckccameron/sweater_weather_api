@@ -8,7 +8,7 @@ describe User, type: :model do
   end
 
   describe "methods" do
-    it "creates with a unique api key" do
+    it "creates a unique api key" do
       user = User.create!(email: "boom@shakalaka.com", password: "123password", password_confirmation: "123password")
 
       expect(user.api_key.nil?).to eq(false)

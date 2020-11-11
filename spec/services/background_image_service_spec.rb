@@ -10,6 +10,10 @@ describe BackgroundImageService do
   end
 
   it "returns background image for a given location" do
+    response = File.read("spec/fixtures/denver_pexels_image.json")
+    stub_request(:get, "https://api.pexels.com/v1/search?per_page=1&query=denver")
+      .to_return(status: 200, body: response)
+      
     location = "denver, co"
     image_data = @service.get_image(location)
 

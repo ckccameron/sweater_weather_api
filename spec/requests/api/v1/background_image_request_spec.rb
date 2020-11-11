@@ -3,6 +3,10 @@ require 'rails_helper'
 describe "background image requests" do
   describe "when a user visits the landing page" do
     it "can retrieve background image for a given city" do
+      data = File.read("spec/fixtures/denver_pexels_image.json")
+      stub_request(:get, "https://api.pexels.com/v1/search?per_page=1&query=denver")
+        .to_return(status: 200, body: data)
+
       city = "denver,co"
       get "/api/v1/background?location=#{city}"
 
