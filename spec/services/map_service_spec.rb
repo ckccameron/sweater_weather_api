@@ -49,4 +49,25 @@ describe MapService do
     expect(geocode_data[:results][0][:locations][0][:latLng]).to have_key(:lng)
     expect(geocode_data[:results][0][:locations][0][:latLng][:lng]).to be_a(Float)
   end
+
+  it "returns route data to show travel distance between origin and destination" do
+    origin = "los angeles, ca"
+    destination = "san diego, ca"
+    route_data = @service.get_distance_between(origin, destination)
+
+    expect(route_data).to have_key(:route)
+    expect(route_data[:route]).to be_a(Hash)
+
+    expect(route_data[:route]).to have_key(:distance)
+    expect(route_data[:route]).to have_key(:formattedTime)
+    expect(route_data[:route]).to have_key(:sessionId)
+    expect(route_data[:route]).to have_key(:realTime)
+    expect(route_data[:route]).to have_key(:legs)
+
+    expect(route_data[:route][:distance]).to be_a(Float)
+    expect(route_data[:route][:formattedTime]).to be_a(String)
+    expect(route_data[:route][:sessionId]).to be_a(String)
+    expect(route_data[:route][:realTime]).to be_an(Integer)
+    expect(route_data[:route][:legs]).to be_an(Array)
+  end
 end

@@ -62,6 +62,8 @@ class WeatherFacade
     end
   end
 
+  private
+
   def weather_service
     WeatherService.new.get_weather(lat, long)
   end
