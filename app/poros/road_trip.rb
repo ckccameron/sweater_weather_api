@@ -3,14 +3,14 @@ class RoadTrip
               :origin,
               :destination,
               :travel_time,
-              :forecast_at_eta
+              :weather_at_eta
 
   def initialize(data)
     @origin = data[:origin]
     @destination = data[:destination]
     @travel_time_unformatted = data[:travel_time_string]
     @travel_time = format_travel_time
-    @forecast_at_eta = data[:forecast_at_eta]
+    @weather_at_eta = data[:forecast_at_eta]
   end
 
   def format_travel_time
