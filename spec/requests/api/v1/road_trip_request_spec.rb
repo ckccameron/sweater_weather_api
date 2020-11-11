@@ -7,14 +7,26 @@ describe "road trip requests" do
     end
 
     it "can accept a request body including starting city and destination city to create a road trip" do
+      data1 = File.read("spec/fixtures/denver_to_san_diego_mapquest_route.json")
+      stub_request(:get, "http://www.mapquestapi.com/directions/v2/route?from=Denver,%20CO&key=#{ENV["MAPQUEST_KEY"]}&to=San%20Diego,%20CA")
+        .to_return(status: 200, body: data1)
+
+      data2 = File.read("spec/fixtures/san_diego_mapquest_geocode.json")
+      stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/address?key=S4SXZhZF3pzXzFyReP6k0VK2gVy6jKDC&location=San%20Diego,%20CA")
+        .to_return(status: 200, body: data2)
+
+      data3 = File.read("spec/fixtures/san_diego_open_weather_forecast.json")
+      stub_request(:get, "https://api.openweathermap.org/data/2.5/onecall?appid=#{ENV["WEATHER_KEY"]}&exclude=minutely&lat=32.71576&lon=-117.163817&units=imperial")
+        .to_return(status: 200, body: data3)
+
       headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
 
       params = {
-        "origin": "Denver,CO",
-        "destination": "Pueblo,CO",
+        "origin": "Denver, CO",
+        "destination": "San Diego, CA",
         "api_key": @user.api_key
       }
 
