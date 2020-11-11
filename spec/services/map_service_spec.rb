@@ -2,10 +2,6 @@ require 'rails_helper'
 
 describe MapService do
   before :each do
-    # response = File.read("spec/fixtures/denver_mapquest_geocode.json")
-    # stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/address?key=#{ENV["MAPQUEST_KEY"]}&location=denver,%20co")
-    #   .to_return(status: 200, body: response)
-
     @service = MapService.new
   end
 
@@ -14,6 +10,10 @@ describe MapService do
   end
 
   it "returns geocoding data for a given location" do
+    response = File.read("spec/fixtures/denver_mapquest_geocode.json")
+    stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/address?key=#{ENV["MAPQUEST_KEY"]}&location=denver,%20co")
+      .to_return(status: 200, body: response)
+
     location = "denver, co"
     geocode_data = @service.get_geocode(location)
 
@@ -51,7 +51,11 @@ describe MapService do
   end
 
   it "returns route data to show travel distance between origin and destination" do
-    origin = "los angeles, ca"
+    response = File.read("spec/fixtures/denver_to_san_diego_mapquest_route.json")
+    stub_request(:get, "http://www.mapquestapi.com/directions/v2/route?from=denver,%20co&key=#{ENV["MAPQUEST_KEY"]}&to=san%20diego,%20ca")
+      .to_return(status: 200, body: response)
+
+    origin = "denver, co"
     destination = "san diego, ca"
     route_data = @service.get_distance_between(origin, destination)
 
