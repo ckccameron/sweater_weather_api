@@ -1,4 +1,6 @@
-# Sweater Weather
+# README
+
+## Sweater Weather
 
 The Sweater Weather API is a project completed by [Cam Chery](https://github.com/ckccameron) for the Turing School of Software and Design. It was completed over a period of 5 days.
 
@@ -40,21 +42,26 @@ Geocoding and directions data was retrieved from [MapQuest](https://developer.ma
 
 After installing Figaro, you will see that a file has been created - *config/application.yml*.
 
-Within this file, format your API keys exactly as you see below. Follow the links attached with each key to retrieve your own unique API keys. For each key, instead of <YOUR KEY HERE>, you'll just copy and paste your key from each website.
+Within this file, format your API keys exactly as you see below. Follow the links attached with each key to retrieve your own unique API keys.
 
-MAPQUEST_KEY: <YOUR KEY HERE> - [MapQuest](https://developer.mapquest.com/documentation/)
-WEATHER_KEY: <YOUR KEY HERE> - [OpenWeather](https://openweathermap.org/api)
-IMAGE_KEY: <YOUR KEY HERE> - [Pexels](https://www.pexels.com/login/)
+MAPQUEST_KEY: *copy/paste your key here* - [MapQuest](https://developer.mapquest.com/documentation/)
+  
+WEATHER_KEY: *copy/paste your key here* - [OpenWeather](https://openweathermap.org/api)
+  
+IMAGE_KEY: *copy/paste your key here* - [Pexels](https://www.pexels.com/login/)
   
 ## Endpoints <a name="endpoints"></a>
 
 #### GET /api/v1/forecast
 
 Example Request:
+
 `{URL}/api/v1/forecast?location=san diego, ca`
 
 Example Happy Path Response:
-`{
+
+```
+{
     "data": {
        "id": null,
         "type": "forecast",
@@ -115,15 +122,19 @@ Example Happy Path Response:
             ]
         }
     }
-}`
+}
+```
 
 #### GET /api/v1/background
 
 Example Request:
+
 `{URL}/api/v1/background?location=denver, co`
 
 Example Happy Path Response:
-`{
+
+```
+{
     "data": {
         "id": null,
         "type": "background_image",
@@ -138,22 +149,29 @@ Example Happy Path Response:
             }
         }
     }
-}`
+}
+```
 
 #### POST /api/v1/users
 
 Example Request:
+
 `{URL}/api/v1/users`
 
 Example Request Body:
-`{
+
+```
+{
   "email": "boom@shakalaka.com",
   "password": "123pass",
   "password_confirmation": "123pass"
-}`
+}
+```
 
 Example Happy Path Response:
-`{
+
+```
+{
     "data": {
         "id": "3",
         "type": "users",
@@ -162,10 +180,13 @@ Example Happy Path Response:
             "api_key": "<unique api key is shown here>"
         }
     }
-}`
+}
+```
 
 Example Sad Path Response:
-`{
+
+```
+{
     "data": {
         "id": null,
         "type": "error",
@@ -173,21 +194,28 @@ Example Sad Path Response:
             "message": "Your credentials are bad"
         }
     }
-}`
+}
+```
 
 #### POST api/v1/sessions
 
 Example Request:
+
 `{URL}/api/v1/sessions`
 
 Example Request Body:
-`{
+
+```
+{
   "email": "boom@shakalaka.com",
   "password": "123pass"
-}`
+}
+```
 
 Example Happy Path Response:
-`{
+
+```
+{
     "data": {
         "id": "3",
         "type": "users",
@@ -196,10 +224,13 @@ Example Happy Path Response:
             "api_key": "<unique api key is shown here>"
         }
     }
-}`
+}
+```
 
 Example Sad Path Response:
-`{
+
+```
+{
     "data": {
         "id": null,
         "type": "error",
@@ -207,22 +238,29 @@ Example Sad Path Response:
             "message": "Your credentials are bad"
         }
     }
-}`
+}
+```
 
 #### POST /api/v1/road_trip
 
  Example Request:
+ 
  `{URL}/api/v1/road_trip`
  
  Example Request Body:
-`{
+ 
+```
+{
   "origin": "Los Angeles, CA",
   "destination": "San Diego, CA",
   "api_key": "<unique api key is shown here>"
-}`
+}
+```
 
 Example Happy Path Response:
-`{
+
+```
+{
     "data": {
         "id": null,
         "type": "road_trip",
@@ -236,11 +274,12 @@ Example Happy Path Response:
             }
         }
     }
-}`
+}
+```
 
 ## Contributor <a name="contributor"></a>
 
-Cam Chery
+**Cam Chery**
 [<img align="left" alt="cam github" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />][git-cam]
 [<img align="left" alt="cam linkedin' | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />][linkedin-cam]
 
