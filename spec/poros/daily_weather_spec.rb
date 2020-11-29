@@ -17,7 +17,7 @@ describe DailyWeather do
 
   it "exists with attributes" do
     expect(@weather).to be_a(DailyWeather)
-    expect(@weather.date).to eq("2020-11-08, 10:00")
+    expect(@weather.date).to eq("2020-11-08, 06:00")
     expect(@weather.sunrise).to eq("2020-11-08, 05:37")
     expect(@weather.sunset).to eq("2020-11-08, 03:50")
     expect(@weather.max_temp).to eq(58.68)

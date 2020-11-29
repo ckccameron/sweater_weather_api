@@ -17,7 +17,7 @@ describe HourlyWeather do
 
   it "exists with attributes" do
     expect(@weather).to be_a(HourlyWeather)
-    expect(@weather.time).to eq("10:00")
+    expect(@weather.time).to eq("06:00")
     expect(@weather.temperature).to eq(55.38)
     expect(@weather.feels_like).to eq(43.45)
     expect(@weather.wind_speed).to eq("11 miles per hour")
